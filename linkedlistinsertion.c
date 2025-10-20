@@ -15,7 +15,25 @@ struct Node* createNode(int value) {
     return newNode;
 }
 
-...
+// Function to insert a node at the end of the list
+void insertEnd(struct Node** head, int value) {
+    struct Node* newNode = createNode(value);
+
+    // If the list is empty, new node becomes the head
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+
+    // Otherwise, traverse to the last node
+    struct Node* temp = *head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+
+    // Link the new node at the end
+    temp->next = newNode;
+}
 // Function to display the linked list
 void displayList(struct Node* head) {
     struct Node* temp = head;
